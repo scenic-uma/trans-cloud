@@ -2439,6 +2439,6 @@ delete this[t])},_configureProperties:function(e,t){for(var n in e){var r=e[n];i
     </app-drawer-layout>
   </template>
 
-  <script>Polymer({is:"my-app",properties:{pagee:{type:String,reflectToAttribute:!0,observer:"_pageChanged"}},observers:["_routePageChanged(routeData.pagee)"],_routePageChanged:function(e){this.pagee=e||"view1",this.$.pages.selected=this.pagee},_pageChanged:function(e){var t=this.resolveUrl("my-"+e+".html");this.importHref(t,null,this._showPage404,!0)},_showPage404:function(){this.pagee="view404"},ready:function(){},_selectPage:function(e){},_onIronResize:function(){}});</script>
+  <script>Polymer({is:"my-app",properties:{pagee:{type:String,reflectToAttribute:!0,observer:"_pageChanged"}},observers:["_routePageChanged(routeData.pagee)"],_routePageChanged:function(e){this.pagee=e||"view1",this.$.pages.selected=this.pagee},_pageChanged:function(e){console.log(e);var t=this.resolveUrl("my-"+e+".html");console.log(t),this.importHref(t,null,this._showPage404,!0)},_showPage404:function(){this.pagee="view404"},ready:function(){},_selectPage:function(e){},_onIronResize:function(){}});</script>
 </dom-module>
 </body></html>
