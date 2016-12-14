@@ -14,37 +14,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="evaluation-chart">
   <template>
     <style include="shared-styles">
+
       :host {
         display: block;
-        height: inherit;
+        width: inherit;
+        margin: 0;
+        --paper-card-header: {
+          background-color:   #BDBDBD;
+        };
       }
-      google-chart {
-        height: auto;
-        width: auto;
-      }
-    </style>
-    <paper-card>
-      <div class="card-content">
-        <div class="circle">{{evaluation}}</div>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-        <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        <template is="dom-if" if={{xx}} restamp="true">
-          <google-chart
-          id="charX"
-          type="md-line"
-          options='{"title": "Days in a month"}'
-          data={{valuesForChart}}>
-        </google-chart>
-      </template>
-    </div>
-    </paper-card>
 
+      #resizingchart {
+        width: 500px !important;
+        height: 300px !important;
+      }
+
+
+      paper-card{
+        width: 100%;
+      }
+
+      @media(min-width: 1470px) {
+        #resizingchart {
+          width: 500px !important;
+          height: 300px !important;
+
+        }
+      }
+
+      @media(max-width: 1470px) {
+        #resizingchart {
+          width: 500px !important;
+          height: 300px !important;
+        }
+      }
+
+    </style>
+
+    <paper-card id="papercard" heading="{{evaluation}}º Deployment on {{providers}}">
+      <div class="card-content">
+        <!-- <template is="dom-if" if={{data}}> -->
+          <content select="ggcc"></content>
+          <div align="center">
+            <google-chart id="resizingchart" type="md-line" data={{valuesForChart}}>
+            </google-chart>
+          </div>
+      <!-- </template> -->
+    </div>
+    <div class="card-actions">
+      <paper-icon-button class=download-icon icon="cloud-download"></paper-icon-button>
+    </div>
+
+    </paper-card>
 
   </template>
 
@@ -52,11 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer({
       is: 'evaluation-chart',
       properties: {
-        joselito: {
-          type: String,
-          value: 'default',
-        },
-        xx: {
+        data: {
           type: Object,
           value: null,
           observer: '_render',
@@ -68,25 +93,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         valuesForChart: {
           type: Array,
           value: null,
-        }
+        },
+
+        providers: {
+          type: String,
+        },
       },
 
       _render: function() {
-        if(this.xx) {
+        if(this.data) {
           this.valuesForChart =
             [
-              this.xx.names,
-              this.toDataArray(this.xx.setup),
-              this.toDataArray(this.xx.preStart),
-              this.toDataArray(this.xx.deploy),
-              this.toDataArray(this.xx.preLaunch),
-              this.toDataArray(this.xx.launch),
-              this.toDataArray(this.xx.postLaunch),
-              this.toDataArray(this.xx.postStart),
+              this.data.names,
+              this.toDataArray(this.data.setup),
+              this.toDataArray(this.data.preStart),
+              this.toDataArray(this.data.deploy),
+              this.toDataArray(this.data.preLaunch),
+              this.toDataArray(this.data.launch),
+              this.toDataArray(this.data.postLaunch),
+              this.toDataArray(this.data.postStart),
             ];
         }
-        console.log("");
-
       },
 
       toDataArray: function(arrayOfStrings) {
@@ -105,7 +132,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return null;
       },
 
-/*
       behaviors: [
             Polymer.IronResizableBehavior
           ],
@@ -114,12 +140,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           'iron-resize': '_onIronResize'
         },
 
-      _onIronResize: function() {
-        console.log("RESIZE");
-         var charX= this.$.charX;
-         charX.redraw();
+      _onIronResize: function(e) {
+         var cg = this.$.resizingchart;
+         //console.log('REDRAW',this.evaluation, this.providers);
+         //console.log(document.hasFocus(), this.providers);
+          //cg.redraw();
+       },
 
-       }*/
     });
   </script>
 </dom-module>

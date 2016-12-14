@@ -18,9 +18,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/social-media-icons/social-media-icons.html">
 <link rel="import" href="evaluation-chart.html">
-<link rel="import" href="../bower_components/paper-progress/paper-progress.html">
 
-<dom-module id="my-view6">
+
+<dom-module id="my-view8">
   <template>
     <style include="app-grid-style shared-styles">
 
@@ -66,11 +66,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin-right: 0px;
           padding-right: inherit;
         }
-
-        #cardcontent{
-          /*width: 577.44px !important;*/
-        }
-
       }
 
       @media(max-width: 1470px) {
@@ -80,52 +75,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         #card-grid {
           width: 800px;
         }
-
-        #cardcontent{
-          /*width: 796.89px !important;*/
-        }
-
       }
-
-      paper-progress {
-        width: 100%;
-         --paper-progress-active-color: #e91e63;
-      }
-
-
-/*.centered-panel {
-  margin: 15 0 auto;
-}*/
-
     </style>
 
-    <!-- <paper-progress class="middle fit" value="100"></paper-progress> -->
-
     <iron-ajax auto
-      url="./data/chart/aws-data.json"
+      url="./data/chart/aws-pivotal-forum-data.json"
       handle-as="json"
       last-response="{{chartData}}">
     </iron-ajax>
-    <div class=".centered-panel">
+
     <div id="card-grid" class= "app-grid">
 
-      <paper-card class="item first-card" heading="Deployment on AWS">
-        <div class="card-content" id="cardcontent">
-        <span>Deployment of Softcare application using Amazon Web Services.
-          Then, all Softcare's modules are deployed on AWS.</span><br>
+      <paper-card class="item first-card" heading="Deployment on AWS and Pivotal (Forum)">
+        <div class="card-content">
+        <span>Deployment of Softcare application using AWS and Pivotal Web Services.</span><br>
+        <span>In this trans-cloud use case, Softcare's components are distributed as following:</span>
+
         <ul>
           <li align="left">
-            <a target="_blank" href="https://aws.amazon.com/"><paper-button>AWS</paper-button></a>
-            <span>SoftcareDashboard</span>,
-            <span>Multimedia</span>,
-            <span>SoftcareWS</span>,
-            <span>Forum</span>,
-            <span>MultimediaDB</span>,
-            <span>SoftcareDB</span> and
-            <span>ForumDB</span>.
+            <a target="_blank" href="https://aws.amazon.com/"><paper-button>AWS:</paper-button></a>
+            <span> </span>
+            <span>SoftcareDashboard</span>, <span>Multimedia</span> and <span>SoftcareWS</span>
+          </li>
+          <li align="left">
+            <a target="_blank" href="https://run.pivotal.io/"><paper-button>Pivotal WS:</paper-button></a>
+            <span> </span>
+            <span>Forum</span>, <span>MultimediaDB</span>, <span>SoftcareDB</span> and <span>ForumDB</span>
           </li>
         </ul>
         <span>Application was deployed 100 times</span>
+
+        <!-- <social-media-icons></social-media-icons> -->
         </div>
         <div class="card-actions">
           <paper-icon-button class=download-icon icon="cloud-download"></paper-icon-button>
@@ -139,29 +119,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         initial-count="10"
         target-framerate="50"
         delay="2s"
-        >
-        <evaluation-chart style="width: inherit"
+        >        <evaluation-chart
           data={{item}}
           evaluation={{inc(index)}}
-          providers="AWS"
+          providers="AWS and Pivotal"
           >
         </evaluation-chart>
       </template>
     </div>
-  </div>
+
   </template>
 
   <script>
     Polymer({
-      is: 'my-view6',
-
-      properties: {
-
-      },
+      is: 'my-view8',
 
       attached: function() {
         this._updateGridStyles = this._updateGridStyles || function() {
           this.updateStyles();
+          //console.log('UPDATE-8');
+
         }.bind(this);
         window.addEventListener('resize', this._updateGridStyles);
       },
@@ -172,9 +149,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       inc: function(v){
         return v+1;
-      },
-
-
+      }
     });
 
   </script>

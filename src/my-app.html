@@ -20,21 +20,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="shared-styles.html">
+
+
+
 <link rel="import" href="my-icons.html">
 
 <dom-module id="my-app">
   <template>
-    <style>
+  <style include="shared-styles">
       :host {
         --app-primary-color: #4285f4;
+        /*--app-primary-color: #2196F3*/
+        /*--primary-dark-color: #1976D2;*/
         --app-secondary-color: black;
-
         display: block;
       }
 
       app-header {
         color: #fff;
-        background-color: var(--app-primary-color);
+        /*background-color: var(--app-primary-color);*/
+        background-color: var(--paper-indigo-500);
+        /*background-color: var(--primary-dark-color);*/
       }
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
@@ -50,12 +58,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-decoration: none;
         color: var(--app-secondary-color);
         line-height: 40px;
+        border-left: 4px solid white;
       }
 
       .drawer-list a.iron-selected {
-        color: black;
+        border-left: 4px solid var(--paper-pink-500);
+        color: var(--paper-pink-500);
         font-weight: bold;
       }
+
+      .paper-link {
+        color: black;
+        text-decoration:none;
+      }
+
+      .paper-link:hover {
+        color: var(--paper-pink-600);
+      }
+
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -67,16 +87,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-drawer-layout fullbleed>
       <!-- Drawer content -->
-      <app-drawer opened= "false">
-        <app-toolbar>Evaluations</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <!-- <a name="view1" href="/view1">View One</a> -->
-          <!-- <a name="view2" href="/view2">View Two</a> -->
-          <a name="view3" href="/view3">BluePrint</a>
-          <!-- <a name="view4" href="/view4">View Four</a> -->
-          <!-- <a name="view5" href="/view5">View Five</a> -->
-          <a name="view6" href="/view6">Pivotal</a>
-          <a name="view7" href="/view7">Pivotal and AWS</a>
+      <app-drawer>
+        <app-toolbar>
+          <a target="_blank" href="https://github.com/scenic-uma/brooklyn-dist/tree/trans-cloud" tabindex="-1" class="paper-link">
+          Trans-cloud</a>
+        </app-toolbar>
+        <iron-selector selected="{{page}}" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="view1" href="/view1">What is <em>Trans-cloud</em>?</a>
+          <a name="view2" href="/view2">Experiments</a>
+          <!--<a name="view3" href="/view3">BluePrint</a>-->
+          <a name="view6" href="/view6">AWS</a>
+          <a name="view7" href="/view7">AWS and Pivotal</a>
+          <a name="view8" href="/view8">AWS and Pivotal (Forum)</a>
+          <a name="view9" href="/view9">AWS and Softlayer (Forum)</a>
+
+
         </iron-selector>
       </app-drawer>
 
@@ -89,18 +114,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header>
 
-        <iron-pages
-            selected="[[pagee]]"
+        <iron-pages id="pages"
+            selected="{{pagee}}"
             attr-for-selected="name"
             fallback-selection="view404"
-            role="main">
-          <!-- <my-view1 name="view1"></my-view1> -->
-          <!-- <my-view2 name="view2"></my-view2> -->
-          <my-view3 name="view3"></my-view3>
-          <!-- <my-view4 name="view4"></my-view4> -->
-          <!-- <my-view5 name="view5"></my-view5> -->
-          <my-view6 name="view6"></my-view6>
-          <my-view7 name="view7"></my-view7>
+            role="main"
+            on-iron-select="_selectPage"
+            >
+          <my-view1 id="view1" name="view1"></my-view1>
+          <my-view2 id="view2" name="view2"></my-view2>
+          <my-view3 id="view3" name="view3"></my-view3>
+          <my-view6 id="view6" name="view6"></my-view6>
+          <my-view7 id="view7" name="view7"></my-view7>
+          <my-view8 id="view8" name="view8"></my-view8>
+          <my-view9 id="view9" name="view9"></my-view9>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
@@ -124,20 +151,72 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        console.log(page);
-        this.pagee = page || 'view3';
+        //console.log(page);
+        this.pagee = page || 'view1';
+        this.$.pages.selected =  this.pagee;
       },
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-        console.log(resolvedPageUrl);
+        //console.log(resolvedPageUrl);
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
       },
 
       _showPage404: function() {
         this.pagee = 'view404';
+      },
+
+
+
+      ready: function(){
+        //this.stopResizePagess();
+        //console.log(this.$.pages.items);
+        /*this.$.pages.stopResizeNotificationsFor('view6');
+        this.$.pages.stopResizeNotificationsFor('view7');
+        this.$.pages.stopResizeNotificationsFor('view8');
+        this.$.pages.stopResizeNotificationsFor('view9');*/
+      },
+
+
+
+/*
+      behaviors: [
+            Polymer.IronResizableBehavior
+          ],
+
+      listeners: {
+          'iron-resize': '_onIronResize'
+        },
+*/
+
+      _selectPage: function(e){
+        //this.stopResizePagess();
+        //console.log('ITEMS', this.$.pages.items);
+          //for(ax in this.$.pages.items) {
+            //console.log(ax);
+            //console.log(ax, this.$.pages.items[ax]);//.name, this.$.pages.items[ax].name == this.$.pages.selected);
+            //this.$.pages.stopResizeNotificationsFor(this.$.pages.items[ax]);
+
+          //}
+          //console.log("SELECTABLE", this.$.pages.selected);
+      },
+
+      _onIronResize: function(){
+        //this.stopResizePagess();
+        //this.async();
+        //console.log('BAH', this.behaviors);
+        //var beh = this.behaviors[0];
+        //console.log(beh);
+        //beh.stopResizeNotificationsFor('view6')
+
+        //console.log('DESC', this.$.descendants);
+        //console.log('DESC', Polymer.dom(this.$.pages).childNodes);
+        //console.log(this.$.view9);
+        //this.$.pages.stopResizeNotificationsFor(Polymer.dom(this.$.pages).childNodes[13]);
       }
+
+
     });
   </script>
 </dom-module>
