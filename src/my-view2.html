@@ -1,36 +1,18 @@
 <html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><dom-module id="my-view2">
   <template>
-    <style include="app-grid-style">
+    <style include="shared-styles">
       :host {
         display: block;
-        padding: 50px;
-        --app-grid-columns: 1;
-        --app-grid-gutter: 15px;
-        --app-grid-expandible-item-columns: 1;
+
+        padding: 10px;
       }
-
-      #main-grid {
-        width: 80%;
-        margin: 0 auto;
-
-      }
-
-        p {
-          color: rgba(0,0,40,.6);
-        }
-
-        a {
-          color: #EC407A;
-          text-decoration:none;
-        }
-
-
     </style>
 
-    <div id="main-grid" class="app-grid">
-      <div class="item">
-        <h1>Experiments</h1>
-      </div>
+    <div class="card">
+      <div class="circle">2</div>
+      <h1>View Two</h1>
+      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
+      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
     </div>
   </template>
 
