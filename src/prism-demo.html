@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/prism-element/prism-highlighter.html">
+<link rel="import" href="../bower_components/prism-element/prism-theme-default.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+
+
+</head><body><dom-module id="prism-demo">
+  <template>
+    <style include="prism-theme-default">
+      pre {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+
+
+
+  <prism-highlighter></prism-highlighter>
+  <div>
+    <pre>      <code id="output"></code>
+    <pre>  </pre></pre></div>
+
+
+
+
+
+  </template>
+
+  <script>Polymer({is:"prism-demo",properties:{code:{type:String,observer:"_render"},lang:{type:String}},attached:function(){this._render()},_render:function(){this.$.output.innerHTML=this.highlight(this.code,this.lang)},highlight:function(t,e){return this.fire("syntax-highlight",{code:t,lang:e}).detail.code}});</script>
+
+</dom-module>
+</body></html>

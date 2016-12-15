@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/bower_components/webcomponentsjs/webcomponents-lite.min.js","02395895d5d08242c6ba93518a6da2c5"],["/index.html","c11c33a4a1e4e98d807ecb780291f663"],["/manifest.json","2eefc15db4b58758cddc0d666e27d399"],["/src/my-app.html","2a2ef807f759346db31ddc157383acf2"],["/src/my-view1.html","4ccb8d9cd5b87a92973cc7704873b65f"],["/src/my-view2.html","7e00f1613408e109e6d26853846c8467"],["/src/my-view3.html","1971572d82bd5c7e058dce75bdd068df"],["/src/my-view404.html","557c323a5d9dd6d53c6581308a0b563c"]];
+var PrecacheConfig = [["/bower_components/webcomponentsjs/webcomponents-lite.min.js","02395895d5d08242c6ba93518a6da2c5"],["/index.html","0d739cf055db0f0dfee38f480e0a6c16"],["/manifest.json","2eefc15db4b58758cddc0d666e27d399"],["/src/my-app.html","f8512556513ab449bfee8bfc8962f9cb"],["/src/my-view1.html","a477e7b180721adf636a09f27daf4302"],["/src/my-view2.html","9c6e0ab581aab93c2c150cd16aa7d2b6"],["/src/my-view3.html","85e6121df05adaa9a2d1d0d176cdc141"],["/src/my-view404.html","858fecebfa5de274e8d3f7ba905d599e"],["/src/my-view5.html","d12f2371cdc04482ccc759fecf993763"],["/src/my-view6.html","62ca354889ffa834ef5e894cff24c4b2"],["/src/my-view7.html","9c7dea0c77bd3a306b7ed136d78b1080"],["/src/my-view8.html","3b62bdb92b1c48d019fbfd87ed574ed5"],["/src/my-view9.html","16cd689df427be63296751bf2c35c920"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 
@@ -216,7 +216,7 @@ self.addEventListener('fetch', function(event) {
       cacheName = AbsoluteUrlToCacheName[urlWithoutIgnoredParameters];
     }
 
-    var navigateFallback = 'index.html';
+    var navigateFallback = '/index.html';
     // Ideally, this would check for event.request.mode === 'navigate', but that is not widely
     // supported yet:
     // https://code.google.com/p/chromium/issues/detail?id=540967
