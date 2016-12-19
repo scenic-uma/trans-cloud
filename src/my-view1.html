@@ -13,6 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <dom-module id="my-view1">
@@ -29,7 +31,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       #main-grid {
         width: 80%;
         margin: 0 auto;
-
       }
 
       /*@media(min-width: 1470px) {
@@ -87,6 +88,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           /*background-color: var(--paper-pink-500);*/
           background-color: var(--paper-pink-500);
         }
+
+        paper-icon-button.fa {
+       padding: 10px;
+       line-height: 1em;
+       overflow: hidden;
+     }
 
     </style>
 

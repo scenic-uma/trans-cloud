@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 
-<dom-module id="my-view2">
+<dom-module id="my-view4">
   <template>
     <style is="custom-style" include="app-grid-style shared-styles">
       :host {
@@ -93,92 +93,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div id="main-grid" class= "app-grid">
       <div class="item">
-        <h1>The Use Case: Softcare App</h1>
-        <paper-card elevation=0>
-          <div class="card-content">
-            <p align="justify">
-            In order to analyze the beneficts of Trans-cloud's concepts,
-            Softcare case study is presented like the running example which
-            is used to illustrate the use and evaluation of the proposal.</p>
-
-            <p align="justify">
-              The case study corresponds to an application for the social
-            inclusion of elderly people and for the management of their
-            medical problems. The application is called Softcare, and was
-            developed by Atos Spain in the context of the
-            <a target="_blank" class="paper-link"
-            href="http://www.seaclouds-project.eu/">SeaClouds project</a>.
-            Softcare is a cloud-based clinical, educational, and social
-            application, based on state-of-the-art technology, that provides
-            an innovative and integrated solution with the following main
-            features: home as care-environment through the provision of
-            user-friendly ICT tools for frequent, unobtrusive monitoring;
-            risk assessment and early detection of deterioration symptoms;
-            high-quality interaction between doctors, social workers and
-            elderly people; monitoring and follow-up of the elderlies’
-            progress; and self-care and self- management of chronic
-            conditions, through the development of social networking,
-            educational tools and dietary guidelines.
-          </p>
-          </div>
-        </paper-card>
-      </div>
-
-      <div class="item">
-        <h1>Application Topology</h1>
-        <paper-card elevation=0>
-          <div class="card-content">
-            <p align="justify">
-            As depicted in Figure below, the application is composed of
-            seven modules: four web modules over respective Tomcat servers,
-            namely <em>Software Dashboard</em>, <em>SoftwareWS</em>, <em>Multimedia</em>, and <em>Forum</em>
-            (note the Tomcat icons), and three MySQL databases, namely
-            <em>SoftcareDB</em>, <em>MultimediaDB</em>, and <em>ForumDB</em> (note the database icons).
-            The <em>Softcare Dashboard</em> component provides the main graphical user
-            interface, which depends on the <em>Forum</em>, <em>Multimedia</em> and <em>SoftcareWS</em>
-            modules. <em>Forum</em> adds a forum service to the web platform, <em>Multimedia</em>
-            is responsible for managing the offered multimedia content, and
-            <em>SoftcareWS</em> contains the application’s business logic. The databases
-            <em>ForumDB</em>, <em>MultimediaDB</em> and <em>SoftcareDB</em> store, respectively, the
-            forum’s messages, the multimedia content, and the rest of the
-            application’s data.
-            </p>
-            <div align="center">
-              <iron-image preload
-              class="topology-image"
-              src="../images/agnosticTopology2.png">
-              </iron-image>
-            </div>
-            <p align="justify">
-              To evaluate the trans-cloud approach,
-              it is necessary to know how this topology is described
-              by means of TOSCA's specification and how the application
-              modules can be deployed using different IaaS and PaaS services.
-              <br>
-              Here you can find the
-              <a target="_blank" class="paper-link"
-              href= "https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare.yaml">
-              TOSCA-based Softcare topology</a>, where all
-              aforementioned modules are defined and the related between
-              them accordiong to the topology that is described in the
-              previous picture. Please, note that
-              <a target="_blank" class="paper-link" href=
-              "https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare.yaml#L150-L173">
-              each application component</a>
-              requries that a target location will be specified.
-              </p>
-
-          </div>
-        </paper-card>
-      </div>
-
-
-      <div class="item">
         <h1>Experimental Deployments</h1>
         <paper-card elevation=0>
           <div class="card-content" align="justify">
             <p align="justify">
-              We have carried out experiments with four different deployment
+              Using the <em>Softcare Use Case</em> it has carried out experiments with four different deployment
               plans using
               <a target="_blank" class="paper-link" href="https://aws.amazon.com/">
                 Amazon Web Services</a>,
@@ -187,31 +106,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <a target="_blank" class="paper-link" href="http://www.softlayer.com/">
                 Softlayer</a> as target locations.
               </p>
-
               <ul>
                 <li>
                     <a target="_blank" class="paper-link" href="https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare-aws.yaml">
                   Softcare-AWS</a>
-
-
                   : all modules deployed on AWS.</li>
                 <li>
                     <a target="_blank" class="paper-link" href="https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare-aws-pivotal.yaml">
                   Softcare-AWS-Pivotal</a>
-
-
                   : all MySql modules deployed on AWS, and all Tomcat modules on Pivotal.</li>
                 <li>
                     <a target="_blank" class="paper-link" href="https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare-aws-pivotal-forum.yaml">
                   Softcare-AWS-Pivotal-Forum</a>
-
-
                   : all MySql modules plus the Forum module deployed on AWS and the rest on Pivotal.</li>
                 <li>
-  <a target="_blank" class="paper-link" href="https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare-aws-softlayer-forum.yaml">
+                    <a target="_blank" class="paper-link" href="https://github.com/scenic-uma/brooklyn-dist/blob/trans-cloud/trans-cloud-samples/softcare-aws-softlayer-forum.yaml">
                   Softcare-AWS-Softlayer-Forum</a>
-
-
                   : all MySql modules plus the Forum module deployed on Softlayer.</li>
               </ul>
               <p align="justify">
@@ -276,7 +186,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     Polymer({
-      is: 'my-view2',
+      is: 'my-view4',
 
       attached: function() {
         this._updateGridStyles = this._updateGridStyles || function() {
