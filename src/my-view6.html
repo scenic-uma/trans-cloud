@@ -67,10 +67,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           padding-right: inherit;
         }
 
-        #cardcontent{
-          /*width: 577.44px !important;*/
-        }
-
       }
 
       @media(max-width: 1470px) {
@@ -80,26 +76,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         #card-grid {
           width: 800px;
         }
-
-        #cardcontent{
-          /*width: 796.89px !important;*/
-        }
-
-      }
-
-      paper-progress {
-        width: 100%;
-         --paper-progress-active-color: #e91e63;
       }
 
 
-/*.centered-panel {
-  margin: 15 0 auto;
-}*/
 
     </style>
-
-    <!-- <paper-progress class="middle fit" value="100"></paper-progress> -->
 
     <iron-ajax auto
       url="./data/chart/aws-data.json"
@@ -115,7 +96,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </span>
           <div align="left">
         <ul>
-          <li>
+          <li  align="left">
             <a target="_blank" href="https://aws.amazon.com/"><paper-button>AWS:</paper-button></a>
             <span>SoftcareDashboard</span>,
             <span>Multimedia</span>,
@@ -128,7 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </ul>
       </div>
         </div>
-        
+
         <div class="card-actions">
           <paper-icon-button class=download-icon icon="cloud-download"></paper-icon-button>
         </div>

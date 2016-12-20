@@ -15,36 +15,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 
+
 <dom-module id="my-view4">
   <template>
     <style is="custom-style" include="app-grid-style shared-styles">
       :host {
         display: block;
         padding: 50px;
-        --app-grid-columns: 1;
+        --app-grid-columns: 2;
         --app-grid-gutter: 15px;
-        --app-grid-expandible-item-columns: 1;
-
-        --iron-image-placeholder: {
-              background: #939ed5;
-            };
-
+        --app-grid-expandible-item-columns: 2;
       }
 
       #main-grid {
         width: 80%;
         margin: 0 auto;
-
       }
-
         p {
           font-weight: 300;
         }
-
         ul {
-
           font-weight: 300;
-
         }
 
         .item h1 {
@@ -59,8 +50,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           text-decoration:none;
         }
 
-
-
         paper-card {
           background-color: inherit;
         }
@@ -70,29 +59,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             padding: 0px !important;
         }
 
-        .implementation-button{
-          /*background-color: var(--paper-pink-500);*/
-          background-color: var(--paper-pink-500);
-        }
-
-        .topology-image{
-          background-color: white;
-          --iron-image-width: 600px;
-          --iron-image-height: auto;
+        .plot-image {
+          background-color: red;
+          --iron-image-width: 100%;
           margin: 0 auto;
         }
 
-        @media(max-width: 1180px) {
-          .topology-image{
-            --iron-image-width: 100%;
-          }
+        /*.expandible-item {
+          @apply(--app-grid-expandible-item);
+        }*/
 
+        .item:nth-child(1) {
+          @apply(--app-grid-expandible-item);
+        }
+        .item:nth-child(2) {
+          @apply(--app-grid-expandible-item);
+        }
+        .item:nth-child(7) {
+            @apply(--app-grid-expandible-item);
+        }
+
+
+        .foot-photo {
+          font-weight: 300;
         }
 
     </style>
 
     <div id="main-grid" class= "app-grid">
-      <div class="item">
+      <div class="item expandible-item">
         <h1>Experimental Deployments</h1>
         <paper-card elevation=0>
           <div class="card-content" align="justify">
@@ -149,38 +144,155 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-card>
       </div>
 
-      <div class="item">
-        <h1>Current Approach</h1>
+      <div class="item expandible-item">
+        <h1>Evaluation</h1>
         <paper-card elevation=0>
           <div class="card-content" align="justify">
-            <p> <!-- align="justify"> -->
-              A first trans-cloud management tool prototype has beed developed
-              based on different open-projects,
-              <a class="paper-link" href="https://brooklyn.apache.org/">Apache Brooklyn</a>,
-              <a class="paper-link" href="https://alien4cloud.github.io/">Alien4Cloud</a> and
-              <a class="paper-link" href="https://https://github.com/cloudsoft/brooklyn-tosca/">Brooklyn-tosca</a>.<br>
-              Current trans-cloud approach uses a provider-agnostic
-              <a class="paper-link" href="https://www.oasis-open.org/committees/tosca/">TOSCA-based</a> model of the topology of applications
-              and their required resources, indistinctly
-              using IaaS and PaaS services. This modeling is based
-              on the
-              <a class="paper-link" href="http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/TOSCA-Simple-Profile-YAML-v1.0.html/">TOSCA YAML profile</a>.
-
+            <p align="justify">
+              Charts below, pictures <em>a</em>-<em>d</em>, show box plots for the deployment times
+              of each of the modules for each of the four deployment plans
+              (700 modules for each plan). <br>
+              In these charts,  the deployment results have been grouped
+              by provider, since they differ quite significantly
+              in their performance. If you focus, for example, on the boxes for
+              modules deployed on AWS (in orange in all four charts), we
+              observe a similar pattern in all four cases. With a different
+              concentration of results, the times are quite similar for the
+              modules deployed on SoftLayer (in red in picture <em>c</em>).
             </p>
           </div>
         </paper-card>
-        <div align="right">
-          <!--
-          <a href="../view2" tabindex="-1"> -->
-          <a target="_blank" href="https://github.com/scenic-uma/brooklyn-dist/tree/trans-cloud" tabindex="-1">
-            <paper-button toggles raised
-            class="implementation-button"
-            style="margin: 10px 0">
-            Go to Implementation
-            </paper-button>
-          </a>
-          <div>
+        </div>
+
+
+        <div class="item">
+            <paper-card elevation=0>
+              <div class="card-content" align="justify">
+                <div align="center">
+                <iron-image preload
+                class="plot-image"
+                src="../images/plots/aws-boxplot-10.png">
+                </iron-image>
+                <span class="foot-photo">
+                  <em>(a)</em> AWS - Box plot.
+              </span>
+              </div>
+          </div>
+        </paper-card>
       </div>
+
+      <div class="item">
+          <paper-card elevation=0>
+            <div class="card-content" align="justify">
+              <div align="center">
+              <iron-image preload
+              class="plot-image"
+              src="../images/plots/aws-pivotal-boxplot-10.png">
+              </iron-image>
+              <span class="foot-photo">
+                <em>(b)</em> AWS-Pivotal - Box plot.
+              </span>
+            </div>
+          </div>
+          </paper-card>
+        </div>
+
+
+  <div class="item">
+      <paper-card elevation=0>
+        <div class="card-content" align="justify">
+          <div align="center">
+          <iron-image preload
+          class="plot-image"
+          src="../images/plots/aws-softlayer-forum-boxplot-10.png">
+          </iron-image>
+          <span class="foot-photo">
+            <em>(c)</em> AWS-Softlayer (Forum) - Box plot.
+          </span>
+        </div>
+        </div>
+      </paper-card>
+    </div>
+
+<div class="item">
+    <paper-card elevation=0>
+      <div class="card-content" align="justify">
+        <div align="center">
+        <iron-image preload
+        class="plot-image"
+        src="../images/plots/aws-pivotal-forum-boxplot-10.png">
+        </iron-image>
+        <span class="foot-photo">
+          <em>(d)</em> AWS-Pivotal (Forum) - Box plot.
+        </span>
+      </div>
+  </div>
+</paper-card>
+</div>
+
+
+<div class="item expandible-item">
+  <paper-card elevation=0>
+    <div class="card-content" align="justify">
+      <p align="justify">
+        The plots show how
+        the values are fairly concentrated around the median values for
+        all providers, although with several outliers (around 30–40 out
+        of 700), which show significant overtimes. Although all the
+        deployments were executed sequentially and under similar
+        conditions, some of the executions required more than 150%
+        the average time. Although most of the deployments were completed
+        in less than 450 seconds, some of then took around 750 seconds.
+        For modules deployed on IaaS modules, the divergencies in the
+        times for the deploy task are due to delays in the provisioning
+        of virtual machines or in the creation of the environment to
+        update components; divergencies for the pre-launch task are
+        due to
+        delays in the resolution of dependencies between modules
+        and in the pushing of artifacts to the environment.
+      </p>
+      <p align="justify">
+        To get a better idea as to how the sequence of tasks performed,
+        in pictures <em>f</em>-<em>h</em> the details for the execution of
+        representative deployments have depicted, from which median
+        deployment times have taken. They show the times upon the completion
+        of each of the tasks for each of the modules of our Softcare application.
+        For modules deployed on IaaS services, most of the time is consumed
+        in the setup and deploy tasks, since virtual machines must be
+        provisioned, software loaded, etc.
+
+
+
+        In the chart in picture <em>e</em>
+        you can observe how, since all modules are deployed using AWS services, the times are
+        similar for all of them. Although with some dispersion, when using AWS
+        and SoftLayer, shown in picture <em>g</em>, the times for the different tasks
+        follow a similar pattern, with some extra delays for resolving
+        dependencies. The charts in picture <em>f</em> and h provide a clearer measure
+        of the time required for dependency resolution. Whilst picture <em>f</em> shows
+        a clear differentiation between the modules deployed on AWS and
+        Pivotal, the chart in Picture <em>h</em>, where the module Forum, on which
+        Softcare dashboard depends, clearly shows how this dependency has to be
+        solved in the pre-launch, forcing the task to wait until the Forum
+        module is available.
+      </p>
+
+    </div>
+  </paper-card>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
   </template>
 
