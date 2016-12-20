@@ -65,20 +65,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin: 0 auto;
         }
 
-        /*.expandible-item {
-          @apply(--app-grid-expandible-item);
-        }*/
-
-        .item:nth-child(1) {
+        .expandible-item {
           @apply(--app-grid-expandible-item);
         }
-        .item:nth-child(2) {
-          @apply(--app-grid-expandible-item);
-        }
-        .item:nth-child(7) {
-            @apply(--app-grid-expandible-item);
-        }
-
 
         .foot-photo {
           font-weight: 300;
@@ -260,9 +249,82 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         For modules deployed on IaaS services, most of the time is consumed
         in the setup and deploy tasks, since virtual machines must be
         provisioned, software loaded, etc.
+      </p>
+    </div>
+  </paper-card>
+  </div>
+
+  <div class="item">
+      <paper-card elevation=0>
+        <div class="card-content" align="justify">
+          <div align="center">
+          <iron-image preload
+          class="plot-image"
+          src="../images/plots/aws-median-task-5.png">
+          </iron-image>
+          <span class="foot-photo">
+            <em>(e)</em> AWS - Median.
+        </span>
+        </div>
+    </div>
+  </paper-card>
+</div>
+
+<div class="item">
+    <paper-card elevation=0>
+      <div class="card-content" align="justify">
+        <div align="center">
+        <iron-image preload
+        class="plot-image"
+        src="../images/plots/aws-pivotal-median-task-54.png">
+        </iron-image>
+        <span class="foot-photo">
+          <em>(f)</em> AWS-Pivotal - Median.
+        </span>
+      </div>
+    </div>
+    </paper-card>
+  </div>
+
+
+<div class="item">
+<paper-card elevation=0>
+  <div class="card-content" align="justify">
+    <div align="center">
+    <iron-image preload
+    class="plot-image"
+    src="../images/plots/aws-softlayer-median-task-6.png">
+    </iron-image>
+    <span class="foot-photo">
+      <em>(g)</em> AWS-Softlayer (Forum) - Median.
+    </span>
+  </div>
+  </div>
+</paper-card>
+</div>
+
+<div class="item">
+<paper-card elevation=0>
+<div class="card-content" align="justify">
+  <div align="center">
+  <iron-image preload
+  class="plot-image"
+  src="../images/plots/aws-pivotal-forum-median-task-6.png">
+  </iron-image>
+  <span class="foot-photo">
+    <em>(h)</em> AWS-Pivotal (Forum) - Median.
+  </span>
+</div>
+</div>
+</paper-card>
+</div>
 
 
 
+  <div class="item expandible-item">
+    <paper-card elevation=0>
+      <div class="card-content" align="justify">
+        <p align="justify">
         In the chart in picture <em>e</em>
         you can observe how, since all modules are deployed using AWS services, the times are
         similar for all of them. Although with some dispersion, when using AWS
@@ -276,7 +338,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         solved in the pre-launch, forcing the task to wait until the Forum
         module is available.
       </p>
-
     </div>
   </paper-card>
   </div>

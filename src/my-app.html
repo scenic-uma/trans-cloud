@@ -81,6 +81,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: var(--paper-pink-600);
       }
 
+      .sub-drawer-group {
+        border-top: 1px solid #ECEFF1;
+      }
+
+      .sub-drawer-list-entry {
+          line-height: 35px;
+          font-size: 15px;
+      }
+
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -100,11 +109,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-selector selected="{{pagee}}" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="view1" href="/view1">What is <em>Trans-cloud</em>?</a>
           <a name="view2" href="/view2">The Use Case</a>
-          <a name="view4" href="/view4">Experiments</a>
-          <a name="view6" href="/view6">AWS</a>
-          <a name="view7" href="/view7">AWS and Pivotal</a>
-          <a name="view8" href="/view8">AWS and Pivotal (Forum)</a>
-          <a name="view9" href="/view9">AWS and Softlayer (Forum)</a>
+
+
+          <a class="sub-drawer-group" name="view4" href="/view4">Experiments</a>
+          <a name="view6" href="/view6"><span class="sub-drawer-list-entry"></span>AWS</a>
+          <a name="view7" href="/view7"><span class="sub-drawer-list-entry">AWS and Pivotal</span></a>
+          <a name="view8" href="/view8"><span class="sub-drawer-list-entry">AWS and Pivotal (Forum)</span></a>
+          <a name="view9" href="/view9"><span class="sub-drawer-list-entry">AWS and Softlayer (Forum)</span></a>
+
+
         </iron-selector>
       </app-drawer>
 
